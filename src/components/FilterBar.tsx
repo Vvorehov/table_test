@@ -26,16 +26,16 @@ export const FilterBar = () => {
   };
   const handleStartClear = useCallback(() => {
     dispatch(filterStartDate(null))
-  }, [])
+  }, [dispatch])
 
   const handleEndClear = useCallback(() => {
     dispatch(filterEndDate(null))
-  }, [])
+  }, [dispatch])
   
   const handleClearAllFilters = useCallback(() => {
     dispatch(clearAllFilters())
     handleClose()
-  }, [])
+  }, [dispatch])
 
   return (
     <Grid container spacing={2} alignItems="center" direction='row'>

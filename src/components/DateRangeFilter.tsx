@@ -12,8 +12,8 @@ const DateRangeFilter: React.FC = () => {
     const { startDate, endDate } = useAppSelector((state) => state.filters);
     const dispatch = useAppDispatch();
 
-    const handleStartDate = useCallback((date: Date | null) => dispatch(filterStartDate(date ? date.toISOString() : null)), []);
-    const handleEndDate = useCallback((date: Date | null) => dispatch(filterEndDate(date ? date.toISOString() : null)), []);
+    const handleStartDate = useCallback((date: Date | null) => dispatch(filterStartDate(date ? date.toISOString() : null)), [dispatch]);
+    const handleEndDate = useCallback((date: Date | null) => dispatch(filterEndDate(date ? date.toISOString() : null)), [dispatch]);
   
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={locale}>
