@@ -41,8 +41,8 @@ const CampaignList = () => {
   };
 
   return (<>
-    <TableContainer component={Paper}>
-    <Table sx={{ height: '50rem'}}>
+    <TableContainer component={Paper} sx={{ height: '50rem'}}>
+    <Table>
       <TableHead>
         <TableRow>
           <TableCell colSpan={5}>
@@ -61,8 +61,8 @@ const CampaignList = () => {
       {(rowsPerPage > 0
             ? filteredCampaigns.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : filteredCampaigns
-          ).map((campaign) => (
-          <TableRow key={campaign.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+          ).map((campaign, index) => (
+          <TableRow key={`${campaign.id}-${index}`} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell>{campaign.name}</TableCell>
             <TableCell>{formatDate(campaign.startDate)}</TableCell>
             <TableCell>{formatDate(campaign.endDate)}</TableCell>

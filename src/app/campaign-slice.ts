@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Campaign, campaignsData } from "../api/data"
+import { formatCampaignList } from "../helpers/helpers"
 
 interface CampaignsState {
     campaignsList: Campaign[]
@@ -14,7 +15,7 @@ const campaignsSlice = createSlice({
     initialState: initialCampaignState,
     reducers: {
         addCampaigns(state: CampaignsState, action: PayloadAction<Campaign[]>) {
-            state.campaignsList = state.campaignsList.concat(action.payload)
+            state.campaignsList = state.campaignsList.concat(formatCampaignList(action.payload) as Campaign[])
         },
     }
 })
