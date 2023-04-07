@@ -16,7 +16,8 @@ const CampaignList = () => {
     const nameMatch = campaign.name.toLowerCase().includes(searchFilter.toLowerCase());
     const startDateMatch = startDate ? new Date(campaign.startDate) >= new Date(startDate) : true;
     const endDateMatch = endDate ? new Date(campaign.endDate) <= new Date(endDate) : true;
-    return nameMatch && startDateMatch && endDateMatch;
+    const validDateRange = new Date(campaign.endDate) > new Date(campaign.startDate)
+    return nameMatch && startDateMatch && endDateMatch && validDateRange;
   });
 
   const isActive = (startDate: string, endDate: string): boolean => {
