@@ -1,5 +1,6 @@
 import format from "date-fns/format"
 import camelCase from "lodash/camelCase"
+import { Campaign } from "../api/data"
 
 export const formatToUSD = (amount: number | string) => {
     if (!amount) return
@@ -20,8 +21,8 @@ export const camelCaseKeys = (obj: Record<string, any>) => {
   }, {});
 }
 
-export const formatCampaignList = (campaigns: Record<string, any>[]): Record<string, any>[] => {
-  return (campaigns.map((campaign: Record<string, any>) => camelCaseKeys(campaign)))
+export const formatCampaignList = (campaigns: Record<string, any>[]): Campaign[] => {
+  return (campaigns.map((campaign: Record<string, any>) => camelCaseKeys(campaign) as Campaign))
 }
 
 export const formatDate = (date: string) =>  format(new Date(date), 'MM/dd/yyyy')
